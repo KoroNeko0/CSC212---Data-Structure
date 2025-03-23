@@ -8,6 +8,6 @@ public class Main {
         PrintClass obj = new PrintClass();
         obj.print1();
         obj.print2();
-        System.out.println("Hi Raghad i just used Used branch and a pull request, it seems complicated honsetly");
+        System.out.println("Hi Raghad i just used branch and a pull request, it seems complicated honsetly");
     }//end main
 }//end class
