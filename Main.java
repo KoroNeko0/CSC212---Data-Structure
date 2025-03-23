@@ -4,8 +4,10 @@ public class Main {
         System.out.println("YUP");
          System.out.println("hi maha");
 
+
         PrintClass obj = new PrintClass();
         obj.print1();
         obj.print2();
+
     }//end main
 }//end class
