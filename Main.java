@@ -10,6 +10,8 @@ public class Main {
         obj.print2();
 
         System.out.println("Hi Raghad i just used branch and a pull request, it seems complicated honsetly");
+        
+        System.out.println("Hi Maha, I'm trying to use git with eclipse");
 
 
     }//end main
