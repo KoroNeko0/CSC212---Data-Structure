@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
-
         System.out.println("Hello World :D! Can you edit this code ?");
-        System.out.println("Kinda YES");
+        System.out.println("YUP");
+         System.out.println("hi maha");
 
         PrintClass obj = new PrintClass();
         obj.print1();
