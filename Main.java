@@ -13,6 +13,7 @@ public class Main {
         System.out.println("Hi Maha, I'm trying to use git with eclipse");
         System.out.println("Hi Raghad, me too but instead i'm using IntelliJ IDEA");
         System.out.println("test test");
+        System.out.println(":(");
 
     }//end main
 }//end class
