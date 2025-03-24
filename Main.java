@@ -14,6 +14,9 @@ public class Main {
         System.out.println("Hi Raghad, me too but instead i'm using IntelliJ IDEA");
         System.out.println("test test");
 
+        System.out.println("Hi");
+        System.out.println("And i'm using intelliJ IDEA :D i think it doesn't matter which editor we use");
+
 
     }//end main
 }//end class
