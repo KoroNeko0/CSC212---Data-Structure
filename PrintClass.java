@@ -7,8 +7,7 @@ public class PrintClass {
     public void print2(){
         System.out.println("my cat is naughty >:(");
     }
-
     public void print3(){
-        System.out.println("i use intelliJ idea");
+        System.out.println("Bobo");
     }
 }

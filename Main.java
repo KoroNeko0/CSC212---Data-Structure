@@ -8,15 +8,15 @@ public class Main {
         PrintClass obj = new PrintClass();
         obj.print1();
         obj.print2();
-
+        obj.print3();
         System.out.println("Hi Raghad i just used branch and a pull request, it seems complicated honsetly");
-        
         System.out.println("Hi Maha, I'm trying to use git with eclipse");
+        System.out.println("Hi Raghad, me too but instead i'm using IntelliJ IDEA");
+        System.out.println("test test");
 
         System.out.println("Hi");
-
-
         System.out.println("And i'm using intelliJ IDEA :D i think it doesn't matter which editor we use");
+
 
     }//end main
 }//end class
