@@ -14,7 +14,5 @@ public class Main {
         System.out.println("Hi Maha, I'm trying to use git with eclipse");
         System.out.println("Hi");
 
-
-        System.out.println("And i'm using intelliJ IDEA :D i think it doesn't matter which editor we use");
     }//end main
 }//end class
