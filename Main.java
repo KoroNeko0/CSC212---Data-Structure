@@ -18,8 +18,5 @@ public class Main {
 
         System.out.println("And i'm using intelliJ IDEA :D i think it doesn't matter which editor we use");
 
-        System.out.println("Hi !!!!");
-        
-
     }//end main
 }//end class
