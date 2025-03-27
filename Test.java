@@ -15,6 +15,7 @@ public class Test {
         System.out.println("After Deleting bear.jpg");
         manager.deletePhoto("hedgehog.jpg");
         displayAllPhotos(manager);
+
         Album album1 = new Album("Album1", "bear", manager);
         Album album2 = new Album("Album2", "animal AND grass", manager);
         
