@@ -9,6 +9,16 @@ public class Test {
         manager.addPhoto(photo2);
         Photo photo3 = new Photo("orange-butterfly.jpg", toTagsLinkedList("insect, butterfly, flower, color"));
         manager.addPhoto(photo3);
+        Photo photo4 = new Photo("black-butterfly.jpg" , toTagsLinkedList("insect, butterfly, flower, black"));
+        manager.addPhoto(photo4);
+        Photo photo5 = new Photo("fox.jpg" , toTagsLinkedList("animal, fox, forest, grass"));
+        manager.addPhoto(photo5);
+        Photo photo6 = new Photo("panda.jpg" , toTagsLinkedList("animal, bear, panda, grass"));
+        manager.addPhoto(photo6);
+        Photo photo7 = new Photo("wolf.jpg" , toTagsLinkedList("animal, wolf, mountain, sky, snow, cloud"));
+        manager.addPhoto(photo7);
+        Photo photo8 = new Photo("raccoon.jpg" , toTagsLinkedList("animal, raccoon, log, snow"));
+        manager.addPhoto(photo8);
 
         displayAllPhotos(manager);
 
