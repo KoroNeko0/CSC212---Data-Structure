@@ -10,8 +10,10 @@ public class InvIndexPhotoManager {
 
     // Add a photo
     public void addPhoto(Photo p){
-        if(isPhotoExist(p)) //here is to reject any duplication when addition
+        if(isPhotoExist(p)) { //here is to reject any duplication when addition
             System.out.println("\nAdd photo is rejected, Given Photo is Duplicated");
+            return;
+        }
         else{
             photosList.insert(p);
             LinkedList<String>tagsList = p.getTags();
