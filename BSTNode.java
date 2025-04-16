@@ -8,4 +8,4 @@
  this.data=data;
  left = right = null;
  }
-  }
+  }//end class
