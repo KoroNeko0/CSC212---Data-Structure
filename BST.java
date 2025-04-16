@@ -2,21 +2,22 @@ public class BST<T> {
     private BSTNode<T> root, current;
 
     public BST() {
-        root = current = null;}
+        root = current = null;
+    }
     
 
     public boolean empty() {
-        return root == null;}
+        return root == null;
+    }
     
     
     public boolean full() {
        return false;}
        
     public T retrieve () {
-      return current.data;}
- 
+      return current.data;
+    }
 
- 
      public boolean findKey(String k) {
         BSTNode<T> p = root, q = root;
         if (empty()) return false;
@@ -40,14 +41,14 @@ public class BST<T> {
     }
     
     
-    public boolean insert(String k, Photo val) {
-    BSTNode<Photo> p, q = current;
+    public boolean insert(String k, T val) {
+    BSTNode<T> p, q = current;
     if (findKey(k)) {
         current = q;  
         return false; 
     }
 
-    p = new BSTNode<>(k, val);
+    p = new BSTNode<T>(k, val);
     if (empty()) {
         root = current = p;
         return true;
