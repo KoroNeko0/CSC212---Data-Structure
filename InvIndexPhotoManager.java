@@ -30,12 +30,12 @@ public class InvIndexPhotoManager {
                     LinkedList<Photo> photo1 = invIndex.retrieve();
                     photo1.insert(p);
                     invIndex.insert(tag1 , photo1);
-                }
+                }//end inner else
 
-            }
+            }//end if
 
 
-        }
+        }//end outer else
 
     }
 
