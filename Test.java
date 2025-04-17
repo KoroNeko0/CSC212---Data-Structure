@@ -104,7 +104,8 @@ public class Test {
             System.out.println("Path: " + photos.retrieve().getPath());
 
         }//end if
-
+        else
+            System.out.println("\nEmpty List\n");
     }
 
 }//end class

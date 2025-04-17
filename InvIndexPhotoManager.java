@@ -12,37 +12,87 @@ public class InvIndexPhotoManager {
     public void addPhoto(Photo p){
         if(isPhotoExist(p)) { //here is to reject any duplication when addition
             System.out.println("\nAdd photo is rejected, Given Photo is Duplicated");
-            return;
         }
         else{
             photosList.insert(p);
+
             LinkedList<String>tagsList = p.getTags();
-
             tagsList.findFirst();
-            while(!tagsList.last()){
-                String tag1 =  tagsList.retrieve();
-                boolean found = invIndex.findKey(tag1);
-                if(found){
+            while(true){
 
+                String tag1 =  tagsList.retrieve();
+                boolean isFound = invIndex.findKey(tag1);
+                if(!isFound){
+                    LinkedList<Photo> photo1 = new LinkedList<Photo>();
+                      photo1.insert(p);
+                      invIndex.insert(tag1 , photo1);
+                }
+                else
                     invIndex.retrieve().insert(p);
 
+
+
+                if(!tagsList.last()){
+                    tagsList.findNext();
                 }
-                else {
-                    LinkedList<Photo> photo1 = invIndex.retrieve();
-                    photo1.insert(p);
-                    invIndex.insert(tag1 , photo1);
-                }//end inner else
-
-            }//end if
+                else
+                    break;
 
 
+            }//end while
         }//end outer else
-
     }
 
     // Delete a photo
     public void deletePhoto(String path){
 
+        if(photosList.empty()) {
+            System.out.println("\nEmpty Photo List\n");
+            return;
+        }
+            LinkedList<String> tagsList = null;
+            photosList.findFirst();
+            while(!photosList.last()){
+
+                if(photosList.retrieve().getPath().equals(path)){
+                    tagsList = photosList.retrieve().getTags();
+                    photosList.remove();
+                    break;
+                }//end if
+                else
+                    photosList.findNext();
+            }//end while
+
+            if(photosList.retrieve().getPath().equals(path)){
+                tagsList = photosList.retrieve().getTags();
+                photosList.remove();
+            }
+
+
+
+        if(tagsList == null) {
+            System.out.println("\nRemoved is failed , Path: \"" + path + "\" is Invalid/Not found\n");
+            return;
+        }
+
+        Photo photo1 = new Photo(path,tagsList);
+
+        tagsList.findFirst();
+        while(!tagsList.last()){
+            boolean isFound = invIndex.findKey(tagsList.retrieve());
+            if(isFound) {
+                deleteInnerPhotoListNode(invIndex.retrieve() , photo1);
+                if (invIndex.retrieve().empty())
+                    invIndex.removeKey(tagsList.retrieve());
+            }
+            tagsList.findNext();
+        }
+        boolean isFound = invIndex.findKey(tagsList.retrieve());
+        if(isFound) {
+            deleteInnerPhotoListNode(invIndex.retrieve() , photo1);
+            if (invIndex.retrieve().empty())
+                invIndex.removeKey(tagsList.retrieve());
+        }
     }
 
 
@@ -53,7 +103,7 @@ public class InvIndexPhotoManager {
 
 
 
-    public boolean isPhotoExist(Photo p){
+    private boolean isPhotoExist(Photo p){
 
         if(photosList.empty())
             return false;
@@ -76,6 +126,24 @@ public class InvIndexPhotoManager {
 
     }//end method
 
+    private void deleteInnerPhotoListNode(LinkedList<Photo> innerList , Photo p){
 
+        if(innerList.empty())
+            return;
+
+            innerList.findFirst();
+            while(!innerList.last() && !innerList.empty()){
+
+                if(innerList.retrieve().getPath().equals(p.getPath())) {
+                    innerList.remove();
+                    break;
+                }
+                    innerList.findNext();
+            }//end while
+            if(innerList.retrieve().getPath().equals(p.getPath())&& !innerList.empty())//for last photo in the list
+                innerList.remove();
+
+
+    }
 
 }//end class

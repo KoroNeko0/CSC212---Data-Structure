@@ -53,7 +53,7 @@ public class PhotoManager {
     }
 
     //to prevent photo duplication in the List, this Variable checks if photo exists or not
-    public boolean isPhotoExist(Photo p){
+    private boolean isPhotoExist(Photo p){
 
             if(photosList.empty())
                 return false;

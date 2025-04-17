@@ -126,4 +126,41 @@ private void deleteNode(BSTNode<T> n, BSTNode<T> parent) {
             }
         }
     }
-    }//end class
+
+    public void inOrder(){//just for testing
+
+        if(root == null)
+            System.out.println("Empty tree");
+        else
+            inOrder((BSTNode<LinkedList<Photo>>) root);
+
+    }
+    private void inOrder(BSTNode<LinkedList<Photo>> p){
+        if(p == null)
+            return;
+        inOrder(p.left);
+        System.out.println("key = " +p.key);
+        PrintAllPhotos(p.data);
+        inOrder(p.right);
+
+    }
+
+    public void PrintAllPhotos(LinkedList<Photo> photos) {//just for testing
+
+        if (!photos.empty()) {
+
+            photos.findFirst();
+            int num = 1;
+            while (!photos.last()) {
+                System.out.println(num+") Path: " + photos.retrieve().getPath());
+                photos.findNext();
+                num++;
+            }//end while
+            System.out.println(num+") Path: " + photos.retrieve().getPath());
+            System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+            num = 1;
+        }//end if
+        else
+            System.out.println("\nEmpty List\n");
+    }
+}//end class
