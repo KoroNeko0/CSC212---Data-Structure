@@ -24,8 +24,7 @@ public class InvIndexPhotoManager {
                 boolean found = invIndex.findKey(tag1);
                 if(found){
 
-                LinkedList<Photo> photo1 = invIndex.retrieve();
-                photo1.insert(p);
+                    invIndex.retrieve().insert(p);
 
                 }
                 else {
