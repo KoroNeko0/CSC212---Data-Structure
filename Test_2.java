@@ -25,11 +25,37 @@ public static void main (String [] args) {
     BST<LinkedList<Photo>> invIndex = manager.getPhotos();
     invIndex.inOrder();
 
+    //####################################################################################################################
+
+
+    InvAlbum album1 = new InvAlbum("Album1", "bear", manager);
+    InvAlbum album2 = new InvAlbum("Album2", "animal AND grass", manager);
+    InvAlbum album3 = new InvAlbum("Album3", "", manager);
+
+    System.out.println("\nAlbum1 (condition: bear):");
+    printLLPhoto(album1.getPhotos());
+    System.out.println("Comparisons: " + album1.getNbComps());
+
+    System.out.println("\nAlbum2 (condition: animal AND grass):");
+    printLLPhoto(album2.getPhotos());
+    System.out.println("Comparisons: " + album2.getNbComps());
+
+    System.out.println("\nAlbum3 (no condition):");
+    printLLPhoto(album3.getPhotos());
+    System.out.println("Comparisons: " + album3.getNbComps());
+
+    System.out.println("\nDeleting bear.jpg...");
+    manager.deletePhoto("bear.jpg");
+
+    System.out.println("\nAlbum2 after deleting bear.jpg:");
+    printLLPhoto(album2.getPhotos());
+    System.out.println("Comparisons: " + album2.getNbComps());
 
 
 
 
 }//end main
+
     private static LinkedList<String> toTagsLinkedList(String tags) {
         LinkedList<String> result = new LinkedList<String>();
 
@@ -40,5 +66,15 @@ public static void main (String [] args) {
         }//end for
 
         return result;
+    }
+
+    private static void printLLPhoto(LinkedList<Photo> list) {
+        if (list.empty()) return;
+        list.findFirst();
+        while (!list.last()) {
+            System.out.println(list.retrieve().getPath());
+            list.findNext();
+        }
+        System.out.println(list.retrieve().getPath());
     }
 }//end class

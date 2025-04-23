@@ -163,4 +163,10 @@ private void deleteNode(BSTNode<T> n, BSTNode<T> parent) {
         else
             System.out.println("\nEmpty List\n");
     }
+
+// ########################################################################################################
+    public BSTNode<T> getRoot() {
+        return root;
+    }
+
 }//end class
