@@ -32,7 +32,7 @@ public class Album {
     public LinkedList<Photo> getPhotos() {
 
         LinkedList<Photo> Rphotos = new LinkedList<Photo>();
-        {
+        
             LinkedList<Photo> photos1 = Manager.getPhotos();
             if (!photos1.empty()) {
                 photos1.findFirst();
@@ -42,7 +42,7 @@ public class Album {
                 }
                 Rphotos.insert(new Photo(photos1.retrieve().getPath(), photos1.retrieve().getTags()));
             }
-        }
+        
 
         NumComps = 0;
         if (this.Condition.compareTo("") != 0) {
@@ -87,7 +87,7 @@ public class Album {
                     break;
                 }
 
-                AllTags.findNext(); // الانتقال للعنصر التالي
+                AllTags.findNext(); 
             }
 
             if (!found) {
@@ -97,10 +97,10 @@ public class Album {
                 }
             }
 
-            if (!found) return false; // إذا لم نجد الوسم المطلوب، نُرجع false مباشرةً
+            if (!found) return false;  
         }
 
-        return true; // جميع الوسوم المطلوبة وُجدت
+        return true; 
     }
 
 
