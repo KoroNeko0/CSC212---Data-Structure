@@ -63,9 +63,8 @@ public class Album {
                 Rphotos.findNext();
         }
         return Rphotos;
-
-
     }
+    
 
     // Return the number of tag comparisons used to find all photos of the album
     public int getNbComps() {
