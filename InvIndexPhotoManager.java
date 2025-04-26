@@ -1,4 +1,5 @@
 public class InvIndexPhotoManager {
+
     private BST<LinkedList<Photo>> invIndex;
     private LinkedList<Photo> photosList;
 
@@ -23,9 +24,9 @@ public class InvIndexPhotoManager {
                 String tag1 =  tagsList.retrieve();
                 boolean isFound = invIndex.findKey(tag1);
                 if(!isFound){
-                    LinkedList<Photo> photo1 = new LinkedList<Photo>();
-                      photo1.insert(p);
-                      invIndex.insert(tag1 , photo1);
+                    LinkedList<Photo> PList = new LinkedList<Photo>();
+                    PList.insert(p);
+                      invIndex.insert(tag1 , PList);
                 }
                 else
                     invIndex.retrieve().insert(p);
@@ -52,21 +53,19 @@ public class InvIndexPhotoManager {
         }
             LinkedList<String> tagsList = null;
             photosList.findFirst();
-            while(!photosList.last()){
+        while (true) {
 
-                if(photosList.retrieve().getPath().equals(path)){
-                    tagsList = photosList.retrieve().getTags();
-                    photosList.remove();
-                    break;
-                }//end if
-                else
-                    photosList.findNext();
-            }//end while
-
-            if(photosList.retrieve().getPath().equals(path)){
+            if (photosList.retrieve().getPath().equals(path)) {
                 tagsList = photosList.retrieve().getTags();
                 photosList.remove();
+                break;
             }
+
+            if (photosList.last())
+                break;
+            else
+                photosList.findNext();
+        }
 
 
 
@@ -78,16 +77,17 @@ public class InvIndexPhotoManager {
         Photo photo1 = new Photo(path,tagsList);
 
         tagsList.findFirst();
+        boolean isFound;
         while(!tagsList.last()){
-            boolean isFound = invIndex.findKey(tagsList.retrieve());
+            isFound = invIndex.findKey(tagsList.retrieve());
             if(isFound) {
                 deleteInnerPhotoListNode(invIndex.retrieve() , photo1);
-                if (invIndex.retrieve().empty())
+                if (invIndex.retrieve().empty())//if the inner Linked list of the Node is actually empty (doesn't have any photos) then it will be removes from the BST
                     invIndex.removeKey(tagsList.retrieve());
             }
             tagsList.findNext();
         }
-        boolean isFound = invIndex.findKey(tagsList.retrieve());
+        isFound = invIndex.findKey(tagsList.retrieve());
         if(isFound) {
             deleteInnerPhotoListNode(invIndex.retrieve() , photo1);
             if (invIndex.retrieve().empty())
@@ -117,7 +117,7 @@ public class InvIndexPhotoManager {
 
             photosList.findNext();
         }
-        if(photosList.retrieve().getPath().equals(p.getPath()) )// for the last photo in the List
+        if(photosList.retrieve().getPath().equals(p.getPath()) )//it's for the last photo in the List
             return true;
 
 
@@ -126,24 +126,21 @@ public class InvIndexPhotoManager {
 
     }//end method
 
-    private void deleteInnerPhotoListNode(LinkedList<Photo> innerList , Photo p){
+    private void deleteInnerPhotoListNode(LinkedList<Photo> innerList, Photo p) {
+        if (innerList.empty()) return;
 
-        if(innerList.empty())
-            return;
+        innerList.findFirst();
 
-            innerList.findFirst();
-            while(!innerList.last() && !innerList.empty()){
-
-                if(innerList.retrieve().getPath().equals(p.getPath())) {
-                    innerList.remove();
-                    break;
-                }
-                    innerList.findNext();
-            }//end while
-            if(innerList.retrieve().getPath().equals(p.getPath())&& !innerList.empty())//for last photo in the list
+        while(true) {
+            if (innerList.retrieve().getPath().equals(p.getPath())) {
                 innerList.remove();
+                break;
+            }
 
-
+            if (innerList.last())
+                break;
+            innerList.findNext();
+        }
     }
 
 }//end class
