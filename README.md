@@ -1,4 +1,4 @@
-# Photo Management Application
+# Photo Management Program
 
 A Java-based photo management system that organizes and retrieves images using tag-based conditions, built with custom-implemented data structures (Linked List and Binary Search Tree). Done for CSC212 - Data Structures at King Saud University.
 
